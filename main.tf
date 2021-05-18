@@ -6,7 +6,7 @@ provider "aws" {
 
 #resource "random_pet" "table_name" {}
 
-#resource "aws_dynamodb_table" "tfc_example_table" {
+/*resource "aws_dynamodb_table" "tfc_example_table" {
   name = "${var.db_table_name}-${random_pet.table_name.id}"
 
   read_capacity  = var.db_read_capacity
@@ -17,7 +17,7 @@ provider "aws" {
     name = "UUID"
     type = "S"
   }
-}
+}*/
 
 module "aws_cloudtrail" {
     source             = "trussworks/cloudtrail/aws"
