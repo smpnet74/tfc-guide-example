@@ -24,3 +24,8 @@ module "aws_cloudtrail" {
     s3_bucket_name     = "cloudtrail-logs"
     log_retention_days = 90
 }*/
+
+module "default_vpc" {
+  source = "trussworks/destroy-default-vpc/aws"
+  region = "us-west-2"
+}
