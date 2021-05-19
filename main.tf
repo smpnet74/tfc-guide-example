@@ -23,6 +23,7 @@ module "aws-s3-bucket" {
   bucket         = "${random_pet.bucket_name.id}-logs"
   use_account_alias_prefix = false
   enable_analytics = false
+  acl = "log-delivery-write"
 
   tags = {
     Name        = "cloudtrail logs"
