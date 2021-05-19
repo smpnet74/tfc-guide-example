@@ -23,7 +23,6 @@ module "aws-s3-bucket" {
   bucket         = "${random_pet.bucket_name.id}-logs"
   use_account_alias_prefix = false
   enable_analytics = false
-  acl = "log-delivery-write"
 
   tags = {
     Name        = "cloudtrail logs"
@@ -31,6 +30,10 @@ module "aws-s3-bucket" {
     Description = "Logging bucket for cloudtrail s3 bucket"
   }
 }
+resource "aws_s3_bucket" "private_bucket" {
+  acl = "log-delivery-write"
+}
+
 module "aws-s3-bucket1" {
   source         = "trussworks/s3-private-bucket/aws"
   bucket         = "${random_pet.bucket_name.id}-clouddtrail"
