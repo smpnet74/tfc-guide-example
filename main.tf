@@ -29,10 +29,11 @@ module "aws-s3-bucket" {
     Environment = "Prod"
     Description = "Logging bucket for cloudtrail s3 bucket"
   }
-}
-resource "aws_s3_bucket" "private_bucket" {
+  resource "aws_s3_bucket" "private_bucket" {
   acl = "log-delivery-write"
 }
+}
+
 
 module "aws-s3-bucket1" {
   source         = "trussworks/s3-private-bucket/aws"
