@@ -12,6 +12,10 @@ resource "aws_kms_key" "cloudtrail" {
   key_usage               = "ENCRYPT_DECRYPT"
   is_enabled              = true
   enable_key_rotation    = true
+  tags = {
+    Name        = "My cloudtrail key"
+    Environment = "Prod"
+  }
 }
 
 resource "aws_s3_bucket" "cloudtrail_logging" {
@@ -29,7 +33,7 @@ resource "aws_s3_bucket" "cloudtrail_logging" {
     }
   }
   tags = {
-    Name        = "My bucket"
+    Name        = "My cloud trail logging bucket"
     Environment = "Prod"
   }
 }
