@@ -49,7 +49,7 @@ resource "aws_s3_bucket_public_access_block" "access_good_1" {
 
 module "aws_cloudtrail" {
     source             = "trussworks/cloudtrail/aws"
-    s3_bucket_name     = aws_s3_bucket.cloudtrail_logging.name
+    s3_bucket_name     = aws_s3_bucket.cloudtrail_logging.id
     log_retention_days = 90
     tags = {
       Name        = "Cloudtrail configuration"
