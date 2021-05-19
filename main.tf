@@ -18,6 +18,16 @@ provider "aws" {
     type = "S"
   }
 }*/
+module "aws-s3-bucket" {
+  source         = "trussworks/s3-private-bucket/aws"
+  bucket         = "cloudtrail-logs"
+  logging_bucket = "cloudtrail-logs-logs"
+
+  tags = {
+    Name        = "Environment"
+    Environment = "Prod"
+  }
+}
 
 module "aws_cloudtrail" {
     source             = "trussworks/cloudtrail/aws"
