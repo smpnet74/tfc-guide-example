@@ -28,6 +28,8 @@ module "aws-s3-bucket" {
     Environment = "Prod"
   }
 }
+
+
 /*
 module "aws_cloudtrail" {
     source             = "trussworks/cloudtrail/aws"
