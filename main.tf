@@ -30,7 +30,7 @@ module "aws-s3-bucket" {
     Description = "Logging bucket for cloudtrail s3 bucket"
   }
 }
-module "aws-s3-bucket" {
+module "aws-s3-bucket1" {
   source         = "trussworks/s3-private-bucket/aws"
   bucket         = "${random_pet.bucket_name.id}-clouddtrail"
   logging_bucket = "${random_pet.bucket_name.id}-logs"
