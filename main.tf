@@ -28,9 +28,9 @@ module "aws-s3-bucket" {
     Environment = "Prod"
   }
 }
-
+/*
 module "aws_cloudtrail" {
     source             = "trussworks/cloudtrail/aws"
     s3_bucket_name     = "cloudtrail-logs"
     log_retention_days = 90
-}
+}*/
