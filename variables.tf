@@ -3,17 +3,8 @@ variable "aws_region" {
   default = "us-west-1"
 }
 
-variable "db_table_name" {
-  type    = string
-  default = "terraform-learn1"
-}
-
-variable "db_read_capacity" {
-  type    = number
-  default = 1
-}
-
-variable "db_write_capacity" {
-  type    = number
-  default = 1
+variable "use_account_alias_prefix" {
+  description = "Whether to prefix the bucket name with the AWS account alias."
+  type        = string
+  default     = false
 }
