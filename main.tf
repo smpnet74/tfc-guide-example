@@ -11,7 +11,7 @@ resource "aws_kms_key" "cloudtrail" {
   deletion_window_in_days = 10
   key_usage               = "ENCRYPT_DECRYPT"
   is_enabled              = true
- + enable_key_rotation    = true
+  enable_key_rotation    = true
 }
 
 resource "aws_s3_bucket" "cloudtrail_logging" {
