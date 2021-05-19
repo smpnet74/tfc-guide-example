@@ -17,15 +17,10 @@ provider "aws" {
     name = "UUID"
     type = "S"
   }
-}
+}*/
 
 module "aws_cloudtrail" {
     source             = "trussworks/cloudtrail/aws"
     s3_bucket_name     = "cloudtrail-logs"
     log_retention_days = 90
 }
-
-module "default_vpc" {
-  source = "trussworks/destroy-default-vpc/aws"
-  region = "us-west-2"
-}*/
