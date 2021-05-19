@@ -20,14 +20,14 @@ resource "random_pet" "bucket_name" {}
 }*/
 module "aws-s3-bucket" {
   source         = "trussworks/s3-private-bucket/aws"
-  bucket         = "${random_pet.bucket_name.id}-cloudtrail"
-  logging_bucket = "${random_pet.bucket_name.id}-logs"
+  bucket         = "${random_pet.bucket_name.id}-logs"
   use_account_alias_prefix = false
   enable_analytics = false
 
   tags = {
     Name        = "Environment"
     Environment = "Prod"
+    Description = "Logging bucket for cloudtrail s3 bucket"
   }
 }
 
