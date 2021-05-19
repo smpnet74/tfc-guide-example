@@ -2,9 +2,9 @@ provider "aws" {
   region = var.aws_region
 }
 
-#provider "random" {}
+provider "random" {}
 
-#resource "random_pet" "table_name" {}
+resource "random_pet" "bucket_name" {}
 
 /*resource "aws_dynamodb_table" "tfc_example_table" {
   name = "${var.db_table_name}-${random_pet.table_name.id}"
@@ -20,8 +20,8 @@ provider "aws" {
 }*/
 module "aws-s3-bucket" {
   source         = "trussworks/s3-private-bucket/aws"
-  bucket         = "cloudtrail-logs"
-  logging_bucket = "cloudtrail-logs-logs"
+  bucket         = "random_pet.table_name.id-cloudtrail"
+  logging_bucket = "random_pet.table_name.id-logs"
   use_account_alias_prefix = false
   enable_analytics = false
 
