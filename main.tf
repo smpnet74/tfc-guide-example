@@ -22,6 +22,8 @@ module "aws-s3-bucket" {
   source         = "trussworks/s3-private-bucket/aws"
   bucket         = "cloudtrail-logs"
   logging_bucket = "cloudtrail-logs-logs"
+  use_account_alias_prefix = false
+  enable_analytics = false
 
   tags = {
     Name        = "Environment"
