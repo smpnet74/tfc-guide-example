@@ -25,12 +25,24 @@ module "aws-s3-bucket" {
   enable_analytics = false
 
   tags = {
-    Name        = "Environment"
+    Name        = "cloudtrail logs"
     Environment = "Prod"
     Description = "Logging bucket for cloudtrail s3 bucket"
   }
 }
+module "aws-s3-bucket" {
+  source         = "trussworks/s3-private-bucket/aws"
+  bucket         = "${random_pet.bucket_name.id}-clouddtrail"
+  logging_bucket = "${random_pet.bucket_name.id}-logs"
+  use_account_alias_prefix = false
+  enable_analytics = false
 
+  tags = {
+    Name        = "cloudtrail bucket"
+    Environment = "Prod"
+    Description = "Cloudtrail bucket for cloudtrail logs"
+  }
+}
 
 /*
 module "aws_cloudtrail" {
