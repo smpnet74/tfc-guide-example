@@ -35,6 +35,7 @@ resource "aws_s3_bucket" "cloudtrail_logging" {
   tags = {
     Name        = "My cloud trail logging bucket"
     Environment = "Prod"
+    Automation  = "Terraform"
   }
 }
 
@@ -44,4 +45,15 @@ resource "aws_s3_bucket_public_access_block" "access_good_1" {
   block_public_policy = true
   ignore_public_acls  = true
   restrict_public_buckets = true
+}
+
+module "aws_cloudtrail" {
+    source             = "trussworks/cloudtrail/aws"
+    s3_bucket_name     = aws_s3_bucket.cloudtrail_logging.name
+    log_retention_days = 90
+    tags = {
+      Name        = "Cloudtrail configuration"
+      Environment = "Prod"
+      Automation  = "Terraform"
+  }
 }
