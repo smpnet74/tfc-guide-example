@@ -32,11 +32,6 @@ resource "aws_s3_bucket" "cloudtrail_logging" {
       }
     }
   }
-  tags = {
-    Name        = "My cloud trail logging bucket"
-    Environment = "Prod"
-    Automation  = "Terraform"
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "access_good_1" {
