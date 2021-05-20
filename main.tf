@@ -79,34 +79,6 @@ resource "aws_s3_bucket_public_access_block" "access_good_2" {
   ignore_public_acls  = true
   restrict_public_buckets = true
 }
-
-resource "aws_s3_bucket_policy" "cloudtrail" {
-  bucket = aws_s3_bucket.cloudtrail_bucket.id
-
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression's result to valid JSON syntax.
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Id      = "MYBUCKETPOLICY"
-    Statement = [
-        {
-            "Sid": "AWSCloudTrailAclCheck20150319",
-            "Effect": "Allow",
-            "Principal": {"Service": "cloudtrail.amazonaws.com"},
-            "Action": "s3:GetBucketAcl",
-            "Resource": "arn:aws:s3:::myBucketName"
-        },
-        {
-            "Sid": "AWSCloudTrailWrite20150319",
-            "Effect": "Allow",
-            "Principal": {"Service": "cloudtrail.amazonaws.com"},
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::myBucketName/[optional prefix]/AWSLogs/myAccountID/*",
-            "Condition": {"StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"}}
-        }
-    ]
-  })
-}
 /*
 module "aws_cloudtrail" {
     source             = "trussworks/cloudtrail/aws"
